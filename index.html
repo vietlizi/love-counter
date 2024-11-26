@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .popup {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .popup h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        .popup p {
+            font-size: 18px;
+            color: #555;
+        }
+        .popup input {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .popup button {
+            padding: 10px 20px;
+            background-color: #ff4081;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .popup button:hover {
+            background-color: #f50057;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="popup">
+        <h1>Love Counter</h1>
+        <input type="text" id="nameA" placeholder="Enter name for A" />
+        <input type="text" id="nameB" placeholder="Enter name for B" />
+        <button onclick="checkLoveMatch()">Check Love</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkLoveMatch() {
+            // Get the input names from boxes A and B
+            const nameA = document.getElementById('nameA').value.trim();
+            const nameB = document.getElementById('nameB').value.trim();
+
+            // Define the names that trigger a 100% match
+            const nameAValid = ['Vũ Dũng', 'Dũng Hoàng'];
+            const nameBValid = 'Cao Tùng Dương';
+
+            // Initialize message and percentage
+            let message = "";
+            let percentage = "0%";
+
+            // Check if the names match the valid conditions
+            if (nameAValid.includes(nameA) && nameB === nameBValid) {
+                percentage = "100%";
+                message = "Match Found!";
+            } else {
+                percentage = Math.floor(Math.random() * 101) + "%";
+                message = "No Match Found!";
+            }
+            document.getElementById('result').innerHTML = `${message} Love Compatibility: ${percentage}`;
+        }
+    </script>
+
+</body>
+</html>
